@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
+import { FiEye, FiEyeOff } from "react-icons/fi";
 
 function LoginForm() {
+  const [show, setShow] = useState(false)
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleClick = () => {
+    if (password) {
+      setShow(!show);
+    }
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -28,14 +36,21 @@ function LoginForm() {
           </div>
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-              required
-            />
+            <div className='flex items-center justify-center'>
+              <input
+                type={show ? "text" : "password"}
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                required 
+              />
+              {password && (
+                <p onClick={handleClick} className='ml-[-5vh] text-xl hover:cursor-pointer'>
+                  {show ? <FiEye /> : <FiEyeOff />}
+                </p>
+              )}
+            </div>
           </div>
           <button
             type="submit"
@@ -43,6 +58,7 @@ function LoginForm() {
           >
             Log In
           </button>
+          <a href=""><p className='text-2xl text-center'>Sign up?</p></a>
         </form>
       </div>
     </div>
