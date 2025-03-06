@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Partners from './Partners';
 
 function LandingPage() {
   return (
@@ -12,7 +13,7 @@ function LandingPage() {
         </div>
       </nav>
       <div className="flex-grow flex items-center justify-center">
-        <h1 className="text-4xl font-bold">Welcome to MyApp!</h1>
+        <Partners/>
       </div>
     </div>
   );
