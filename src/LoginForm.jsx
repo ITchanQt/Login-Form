@@ -36,7 +36,7 @@ function LoginForm() {
           </div>
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
-            <div className='flex items-center justify-center'>
+            <div className='flex items-center justify-center relative'>
               <input
                 type={show ? "text" : "password"}
                 id="password"
@@ -46,9 +46,9 @@ function LoginForm() {
                 required 
               />
               {password && (
-                <p onClick={handleClick} className='ml-[-5vh] text-xl hover:cursor-pointer'>
+                <span onClick={handleClick} className='text-lg hover:cursor-pointer absolute right-3'>
                   {show ? <FiEye /> : <FiEyeOff />}
-                </p>
+                </span>
               )}
             </div>
           </div>
@@ -58,7 +58,7 @@ function LoginForm() {
           >
             Log In
           </button>
-          <a href=""><p className='text-2xl text-center'>Sign up?</p></a>
+          <a href="/register"><p className='text-2xl text-center'>Sign up?</p></a>
         </form>
       </div>
     </div>

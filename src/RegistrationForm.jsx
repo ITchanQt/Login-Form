@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 
+
 function RegistrationForm() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [gender, setSelectedGender] = useState('Male')
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [phoneNum, setPhoneNum]  = useState('')
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -13,12 +17,12 @@ function RegistrationForm() {
       return;
     }
     // Handle registration logic here
-    console.log(`Name: ${name}, Email: ${email}, Password: ${password}`);
+    console.log(`Name: ${name}, Email: ${email}, Gender: ${gender}, Phone number: ${phoneNum}, Password: ${password}`);
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded shadow-md w-96">
+      <div className="bg-white p-8 rounded-lg shadow-md w-96">
         <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -28,7 +32,7 @@ function RegistrationForm() {
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 no-spinner"
               required
             />
           </div>
@@ -42,6 +46,29 @@ function RegistrationForm() {
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
               required
             />
+          </div>
+          <div>
+            <label htmlFor="phoneNum" className="block text-sm font-medium text-gray-700">Phone No.</label>
+            <input 
+            type="number" 
+            id="phoneNum"
+            value={phoneNum}
+            onChange={(e) => setPhoneNum(e.target.value)}
+            className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            />
+          </div>
+          <div>
+            <label htmlFor="gender" className="block text-sm font-medium text-gray-700">Gender</label>
+            <select name="gender" id="gender" 
+            className="mt-1 p-2 block w-fit border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            value={gender}
+            onChange={(e) => setSelectedGender(e.target.value)}
+            >
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="gay">Gay</option>
+              <option value="lesbian">Lesbian</option>
+            </select>
           </div>
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
